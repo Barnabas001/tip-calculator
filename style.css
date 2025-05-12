@@ -58,7 +58,9 @@ p {
   gap: 1rem;
 }
 
-.percentage-button {
+.percentage-button,
+.custom-button,
+.custom-toggle {
   background-color: hsl(183, 100%, 15%);
   color: hsl(0, 100%, 100%);
   border: none;
@@ -76,23 +78,6 @@ p {
   font-size: 1.1rem;
   border: none;
   border-radius: 5px;
-  cursor: pointer;
-}
-.custom-input {
-  padding: 8px;
-  font-size: 16px;
-  text-align: center;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  width: 80px;
-  height: 40px;
-  box-sizing: border-box;
-}
-
-.custom-toggle {
-  width: 80px;
-  height: 40px;
-  font-size: 16px;
   cursor: pointer;
 }
 
@@ -215,6 +200,7 @@ p {
 
   .page-content {
     display: grid;
+    max-width: 850px;
     grid-template-columns: 1fr 1fr;
     column-gap: 2rem;
     border-radius: 12px;
