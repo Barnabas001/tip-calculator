@@ -137,7 +137,32 @@ function validateInputs() {
   return valid;
 }
 
-// Handle preset percentage button clicks
+function performCalculation() {
+  const bill = parseFloat(amountInput.value);
+  const people = parseInt(numberInput.value);
+
+  if (!validateInputs() || selectedPercentage === null || isNaN(selectedPercentage)) {
+    tipAmount.innerText = "$0.00";
+    totalAmount.innerText = "$0.00";
+    return;
+  }
+
+  const tip = bill * selectedPercentage;
+  const total = bill + tip;
+  const tipPerPerson = tip / people;
+  const totalPerPerson = total / people;
+
+  tipAmount.innerText = `$${tipPerPerson.toFixed(2)}`;
+  totalAmount.innerText = `$${totalPerPerson.toFixed(2)}`;
+
+  updateResetButtonState();
+}
+
+// calculation on input changes
+amountInput.addEventListener("input", performCalculation);
+numberInput.addEventListener("input", performCalculation);
+
+// Preset percentage buttons
 percentButton.forEach((button) => {
   button.addEventListener("click", (e) => {
     percentButton.forEach((btn) => btn.classList.remove("active-button"));
@@ -145,14 +170,15 @@ percentButton.forEach((button) => {
 
     selectedPercentage = parseFloat(e.target.innerText) / 100;
 
-    // Reset custom input field
     customInput.style.display = "none";
     customToggle.style.display = "inline-block";
     customInput.value = "";
+
+    performCalculation();
   });
 });
 
-// Show input on custom button click
+// Custom toggle button
 customToggle.addEventListener("click", () => {
   customToggle.style.display = "none";
   customInput.style.display = "inline-block";
@@ -161,47 +187,23 @@ customToggle.addEventListener("click", () => {
   percentButton.forEach((btn) => btn.classList.remove("active-button"));
 });
 
-// Update selected percentage from custom input
+// Custom input handler
 customInput.addEventListener("input", () => {
   selectedPercentage = parseFloat(customInput.value) / 100;
+  performCalculation();
 });
 
-// Hide custom input if left empty
+
 customInput.addEventListener("blur", () => {
   if (customInput.value === "") {
     selectedPercentage = null;
     customInput.style.display = "none";
     customToggle.style.display = "inline-block";
+    performCalculation();
   }
 });
 
-// Handle calculation on Enter
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Enter") {
-    if (
-      !validateInputs() ||
-      selectedPercentage === null ||
-      isNaN(selectedPercentage)
-    ) {
-      alert("Please enter valid values and select a tip percentage.");
-      return;
-    }
-
-    const bill = parseFloat(amountInput.value);
-    const people = parseInt(numberInput.value);
-    const tip = bill * selectedPercentage;
-    const total = bill + tip;
-    const tipPerPerson = tip / people;
-    const totalPerPerson = total / people;
-
-    tipAmount.innerText = `$${tipPerPerson.toFixed(2)}`;
-    totalAmount.innerText = `$${totalPerPerson.toFixed(2)}`;
-
-    updateResetButtonState();
-  }
-});
-
-// Reset everything
+// Reset button
 resetButton.addEventListener("click", () => {
   reset();
 });
