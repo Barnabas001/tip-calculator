@@ -35,7 +35,70 @@
     </style>
   </head>
   <body>
-    <main class="container containerJs"></main>
+    <main class="container containerJs">
+      <div class="header-unit">
+  <h3>SPLI</h3>
+  <h3>TTER</h3>
+</div>
+
+<div class="page-content">
+  <section class="input-section">
+    <div class="subInput">
+      <p>Bill</p>
+      <p class="input-warning" id="billWarning">Can't be zero</p>
+    </div>
+    <div class="input-box">
+      <span class="icon"><img src="images/icon-dollar.svg" alt="" /></span>
+      <input type="number" value="0" class="number-input inputJs" />
+    </div>
+    <p>Select Tip %</p>
+    <div class="grid-container">
+      <button class="percentage-button">5%</button>
+      <button class="percentage-button">10%</button>
+      <button class="percentage-button">15%</button>
+      <button class="percentage-button">25%</button>
+      <button class="percentage-button">50%</button>
+      <button class="percentage-button custom-toggle" id="customToggle">Custom</button>
+      <input type="number" placeholder="%" id="customInputJs" class="custom-input" style="display: none;" />
+    </div>
+
+    <div class="subInput">
+      <p>Number of People</p>
+      <p class="input-warning" id="peopleWarning">Can't be zero</p>
+    </div>
+
+    <div class="input-box">
+      <span class="icon"><img src="images/icon-person.svg" alt="" /></span>
+      <input type="number" value="0" class="number-input numberPersonJs" />
+    </div>
+  </section>
+
+  <section class="tipCalculated">
+    <div>
+      <div class="subTipCalculated">
+        <div>
+          <p class="tip-total-paragraph">Tip Amount</p>
+          <p class="person">/ person</p>
+        </div>
+        <div>
+          <p class="calculated-percentages tipAmount">&#36;0.00</p>
+        </div>
+      </div>
+      <div class="subTipCalculated">
+        <div>
+          <p class="tip-total-paragraph">Total</p>
+          <p class="person">/ person</p>
+        </div>
+        <div>
+          <p class="calculated-percentages totalFigure">&#36;0.00</p>
+        </div>
+      </div>
+    </div>
+
+    <button class="reset-button">RESET</button>
+  </section>
+</div>
+    </main>
 
     <div class="attribution">
       Challenge by
