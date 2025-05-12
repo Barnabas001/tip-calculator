@@ -78,6 +78,23 @@ p {
   border-radius: 5px;
   cursor: pointer;
 }
+.custom-input {
+  padding: 8px;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 80px;
+  height: 40px;
+  box-sizing: border-box;
+}
+
+.custom-toggle {
+  width: 80px;
+  height: 40px;
+  font-size: 16px;
+  cursor: pointer;
+}
 
 .active-button {
   background-color: hsl(172, 67%, 45%);
